@@ -13,4 +13,9 @@ class Delivery extends Model
         return $this->belongsTo(Order::class);
     }
     
+    public function staff(){
+        return $this->belongsTo(Staff::class);
+    }
+    
+    
 }
