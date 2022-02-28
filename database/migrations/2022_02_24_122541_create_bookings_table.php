@@ -20,8 +20,8 @@ class CreateBookingsTable extends Migration
             $table->time('booking_time');
             $table->unsignedInteger('num_persons');
             
-            $table->unsignedInteger('table_id')->index();
-            $table->foreign('table_id')->references('id')
+            $table->unsignedInteger('table_num')->index();
+            $table->foreign('table_num')->references('table_num')
                     ->on('tables')
                     ->onDelete('cascade');
             

@@ -14,7 +14,7 @@ class CreateTablesTable extends Migration
     public function up()
     {
         Schema::create('tables', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unique();
             $table->unsignedInteger('table_num')->unique();
             $table->unsignedInteger('num_seats');
             $table->boolean('occupied')->default(0);            

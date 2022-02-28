@@ -29,15 +29,9 @@ class CreateOrdersTable extends Migration {
                     ->on("payments")
                     ->onDelete("cascade");
 
-            $table->unsignedInteger("delivery_id");
-            $table->foreign("delivery_id")
-                    ->references("id")
-                    ->on("deliveries")
-                    ->onDelete("cascade");
-
-            $table->unsignedInteger("table_id");
-            $table->foreign("table_id")
-                    ->references("id")
+            $table->unsignedInteger("table_num");
+            $table->foreign("table_num")
+                    ->references("table_num")
                     ->on("tables")
                     ->onDelete("cascade");
             

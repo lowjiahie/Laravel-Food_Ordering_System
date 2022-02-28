@@ -20,11 +20,6 @@ class CreateRepliesTable extends Migration {
             $table->foreign('account_id')->references('id')
                     ->on('accounts')
                     ->onDelete('cascade');
-
-            $table->unsignedInteger('post_id')->index();
-            $table->foreign('post_id')->references('id')
-                    ->on('posts')
-                    ->onDelete('cascade');
             
             $table->unsignedInteger('comment_id')->index();
             $table->foreign('comment_id')->references('id')

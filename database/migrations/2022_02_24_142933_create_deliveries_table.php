@@ -16,11 +16,17 @@ class CreateDeliveriesTable extends Migration {
             $table->increments('id');
             $table->string('track_no')->unique();
             $table->string('address');
-            
+
             $table->unsignedInteger('staff_id')->index();
             $table->foreign('staff_id')->references('id')
                     ->on('staff')
                     ->onDelete('cascade');
+
+            $table->unsignedInteger("order_id")->unique();
+            $table->foreign("order_id")
+                    ->references("id")
+                    ->on("orders")
+                    ->onDelete("cascade");
 
             $table->timestamps();
         });
