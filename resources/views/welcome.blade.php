@@ -1,4 +1,4 @@
-@extends('layouts.Customer.master')
+@extends('layouts.Staff.master')
 
 @section('content')
 <!-- Styles -->

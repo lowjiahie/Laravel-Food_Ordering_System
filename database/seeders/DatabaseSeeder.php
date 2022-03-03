@@ -3,24 +3,25 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Account;
-use App\Beverage;
-use App\Category;
-use App\Comment;
-use App\Customer;
-use App\Delivery;
-use App\DineIn;
-use App\Dish;
-use App\Food;
-use App\Order;
-use App\OrderItem;
-use App\Payment;
-use App\Post;
-use App\Promotion;
-use App\Reply;
-use App\Staff;
-use App\Status;
-use App\Table;
+use App\Models\Account;
+use App\Models\Beverage;
+use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Customer;
+use App\Models\Delivery;
+use App\Models\DineIn;
+use App\Models\Dish;
+use App\Models\Food;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Payment;
+use App\Models\Post;
+use App\Models\Promotion;
+use App\Models\Reply;
+use App\Models\Staff;
+use App\Models\Status;
+use App\Models\Table;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder {
 
@@ -34,11 +35,9 @@ class DatabaseSeeder extends Seeder {
     }
 
     private function seedAccounts() {
-        
     }
 
     private function seedStaff() {
-        
     }
 
     private function seedCustomers() {

@@ -22,4 +22,5 @@
  7. Update `DB_DATABASE` in `.env` to `foodorderingsystem`
  8. Run `php artisan key:generate`
  9. Run `php artisan migrate`
- 10. Run `php artisan serve`
+ 10. Run `php artisan db:seed`
+ 11. Run `php artisan serve` 

@@ -16,6 +16,7 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->date('DOB');
+            $table->timestamps();
         });
     }
 

@@ -19,7 +19,8 @@ class CreateAccountsTable extends Migration {
             $table->string('accountEmail')->unique();
             $table->text('accountAddress');
             $table->string('password');
-            $table->morphs('accountable');
+            $table->morphs('accountable');    
+            $table->timestamps();
         });
     }
 
