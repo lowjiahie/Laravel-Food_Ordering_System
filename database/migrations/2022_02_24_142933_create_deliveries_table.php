@@ -22,7 +22,7 @@ class CreateDeliveriesTable extends Migration {
                     ->on('staff')
                     ->onDelete('cascade');
 
-            $table->unsignedInteger("order_id")->unique();
+            $table->unsignedInteger("order_id")->index();
             $table->foreign("order_id")
                     ->references("id")
                     ->on("orders")

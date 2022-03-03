@@ -12,7 +12,7 @@ class CreateBeverangesTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('beveranges', function (Blueprint $table) {
+        Schema::create('beverages', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('size');
             $table->string('ice');

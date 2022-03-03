@@ -9,7 +9,7 @@ class Promotion extends Model
 {
     use HasFactory;
     
-    public function payment(){ //not sure
+    public function payment(){
         return $this->hasMany(Payment::class);
     }
 }

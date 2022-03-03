@@ -9,11 +9,11 @@ class Payment extends Model
 {
     use HasFactory;
     
-    public function promotion(){ //not sure
+    public function promotion(){
         return $this->belongsTo(Promotion::class);
     }
     
-    public function order(){ //not sure
-        return $this->hasOne(Order::class);
+    public function order(){
+        return $this->belongsTo(Order::class);
     }
 }

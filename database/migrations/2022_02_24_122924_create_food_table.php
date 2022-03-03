@@ -19,7 +19,7 @@ class CreateFoodTable extends Migration {
             $table->double('price');
             $table->integer('sales');
             $table->integer('quantity');
-            $table->binary('image');
+            $table->string('image_path');
             $table->boolean('chefRecommended');
             $table->morphs('foodable');     
             $table->timestamps();

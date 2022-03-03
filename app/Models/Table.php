@@ -9,12 +9,12 @@ class Table extends Model {
 
     use HasFactory;
 
-    public function booking() {
-        return $this->hasMany(Booking::class);
-    }
-
     public function order() {
         return $this->hasMany(Order::class);
+    }
+    
+    public function dineIn(){
+        return $this->hasMany(DineIn::class);
     }
 
 }

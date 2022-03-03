@@ -21,16 +21,20 @@ class Order extends Model {
         return $this->hasMany(OrderItem::class);
     }
 
+    public function payment() {
+        return $this->hasOne(Payment::class);
+    }
+
+    public function dineIn() {
+        return $this->hasOne(DineIn::class);
+    }
+
     public function table() {
         return $this->belongsTo(Table::class);
     }
 
     public function customer() {
         return $this->belongsTo(Customer::class);
-    }
-
-    public function payment() { // not sure
-        return $this->belongsTo(Payment::class);
     }
 
 }

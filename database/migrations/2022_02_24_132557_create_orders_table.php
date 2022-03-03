@@ -17,24 +17,12 @@ class CreateOrdersTable extends Migration {
             $table->string("note");
             $table->string("serviceMode");
             
-            $table->unsignedInteger("customer_id");
+            $table->unsignedInteger("customer_id")->index();
             $table->foreign("customer_id")
                     ->references("id")
                     ->on("customers")
                     ->onDelete("cascade");
 
-            $table->unsignedInteger("payment_id");
-            $table->foreign("payment_id")
-                    ->references("id")
-                    ->on("payments")
-                    ->onDelete("cascade");
-
-            $table->unsignedInteger("table_num");
-            $table->foreign("table_num")
-                    ->references("table_num")
-                    ->on("tables")
-                    ->onDelete("cascade");
-            
             $table->timestamps();
         });
     }

@@ -13,10 +13,6 @@ class Customer extends Model {
         return $this->morphOne(Account::class, 'accountable');
     }
     
-    public function booking(){
-        return $this->hasMany(Booking::class);
-    }
-    
     public function order(){
         return $this->hasMany(Order::class);
     }
