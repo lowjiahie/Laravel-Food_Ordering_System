@@ -74,9 +74,8 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="foodTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">F&B functions:</h6>
-                            <a class="collapse-item" href="#">1</a>
-                            <a class="collapse-item" href="#">2</a>
-                            <a class="collapse-item" href="#">3</a>
+                            <a class="collapse-item" href="#">Dish</a>
+                            <a class="collapse-item" href="#">Beverages</a>
                         </div>
                     </div>
                 </li>
@@ -106,9 +105,7 @@
                     <div id="collapseSix" class="collapse" aria-labelledby="forumSix" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Forum Functions :</h6>
-                            <a class="collapse-item" href="#">1</a>
-                            <a class="collapse-item" href="#">2</a>
-                            <a class="collapse-item" href="#">3</a>
+                            <a class="collapse-item" href="#">My Post</a>
                         </div>
                     </div>
                 </li>
