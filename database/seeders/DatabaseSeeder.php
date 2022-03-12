@@ -38,14 +38,14 @@ class DatabaseSeeder extends Seeder {
         $this->seedPosts();
         $this->seedComments();
         $this->seedReplies();
-        $this->seedPromotions();
+//        $this->seedPromotions();
         $this->seedTable();
         $this->seedOrders();
         $this->seedOrderItems();
-        $this->seedPayments();
-        $this->seedDineIns();
-        $this->seedDeliveries();
-        $this->seedStatuses();
+//        $this->seedPayments();
+//        $this->seedDineIns();
+//        $this->seedDeliveries();
+//        $this->seedStatuses();
     }
 
     private function seedAccountsStaffOrCus() {
@@ -319,8 +319,13 @@ class DatabaseSeeder extends Seeder {
 
     private function seedTable() {
         Table::create([
+            'table_num' => 00,
+            'num_seats' => 0,
+        ])->save();
+        
+        Table::create([
             'table_num' => 10,
-            'num_seats' => 4,
+            'num_seats' => 8,
         ])->save();
 
         Table::create([
@@ -339,443 +344,32 @@ class DatabaseSeeder extends Seeder {
         ])->save();
     }
 
-    private function seedPromotions() {
-        Promotion::create([
-            'promotionCode' => '',
-            'description' => '',
-            'discount' => 0,
-            'redemptionLimit' => 0,
-            'created_at' => '23-2-2022 07:29:36',
-            'updated_at' => '23-2-2022 07:29:36',
-        ])->save();
-
-        Promotion::create([
-            'promotionCode' => 'NEW_MEMBER',
-            'description' => '10% off for newly registered member.',
-            'discount' => 0.1,
-            'redemptionLimit' => 100,
-            'created_at' => '23-2-2022 07:29:36',
-            'updated_at' => '23-2-2022 07:29:36',
-        ])->save();
-
-        Promotion::create([
-            'promotionCode' => 'PAYDAY',
-            'description' => '15% off for your meals on your PayDay !',
-            'discount' => 0.15,
-            'redemptionLimit' => 80,
-            'created_at' => '23-2-2022 07:29:36',
-            'updated_at' => '23-2-2022 07:29:36',
-        ])->save();
-
-        Promotion::create([
-            'promotionCode' => 'CNY_LOUSHANG',
-            'description' => 'RM15 off on your Lou Shang Set !',
-            'discount' => 15,
-            'redemptionLimit' => 50,
-            'created_at' => '23-2-2022 07:29:36',
-            'updated_at' => '23-2-2022 07:29:36',
-        ])->save();
-
-        Promotion::create([
-            'promotionCode' => 'CHRISTMAS_EVE',
-            'description' => 'RM10 off for your Christmas Eve Dinner !',
-            'discount' => 10,
-            'redemptionLimit' => 120,
-            'created_at' => '23-2-2022 07:29:36',
-            'updated_at' => '23-2-2022 07:29:36',
-        ])->save();
-
-        Promotion::create([
-            'promotionCode' => 'NEWYEAR_EVE',
-            'description' => '5% off for your Order on New Year Eve !',
-            'discount' => 0.5,
-            'redemptionLimit' => 200,
-            'created_at' => '23-2-2022 07:29:36',
-            'updated_at' => '23-2-2022 07:29:36',
-        ])->save();
-    }
-
     private function seedOrders() {
         Order::create([
             'note' => 'New year lou shang after lunch',
             'serviceMode' => 'Dine-In',
             'customer_id' => 1,
+            'table_num'=>20,
             'created_at' => '24-2-2022 07:29:36',
             'updated_at' => '24-2-2022 07:29:36',
         ])->save();
 
         Order::create([
             'note' => 'New year lou shang set',
-            'serviceMode' => 'Delivery',
+            'serviceMode' => 'Dine-In',
             'customer_id' => 1,
+            'table_num'=>30,
             'created_at' => '25-2-2022 07:29:36',
             'updated_at' => '25-2-2022 07:29:36',
         ])->save();
 
         Order::create([
             'note' => 'Cutlery is not needed',
-            'serviceMode' => 'Delivery',
+            'serviceMode' => 'Dine-In',
             'customer_id' => 1,
+            'table_num'=>10,
             'created_at' => '26-2-2022 07:29:36',
             'updated_at' => '26-2-2022 07:29:36',
-        ])->save();
-    }
-
-    private function seedPayments() {
-        Payment::create([
-            'total' => 26.98,
-            'amountReceived' => 30.0,
-            'change' => 3.02,
-            'discount' => 0,
-            'status' => 'Success',
-            'order_id' => 1,
-            'promotion_id' => 1,
-            'created_at' => '24-2-2022 07:29:36',
-            'updated_at' => '24-2-2022 07:29:36',
-        ])->save();
-
-        Payment::create([
-            'total' => 24.00,
-            'amountReceived' => 50.00,
-            'change' => 28.4,
-            'discount' => 2.4,
-            'status' => 'COD',
-            'order_id' => 2,
-            'promotion_id' => 2,
-            'created_at' => '25-2-2022 07:29:36',
-            'updated_at' => '25-2-2022 07:29:36',
-        ])->save();
-
-        Payment::create([
-            'total' => 15.00,
-            'amountReceived' => 13.5,
-            'change' => 0,
-            'discount' => 1.5,
-            'status' => 'COD',
-            'order_id' => 3,
-            'promotion_id' => 2,
-            'created_at' => '25-2-2022 07:29:36',
-            'updated_at' => '25-2-2022 07:29:36',
-        ])->save();
-    }
-
-    private function seedOrderItems() {
-        //Order1
-        OrderItem::create([
-            'qty' => '2',
-            'order_id' => '1',
-            'food_id' => '1',
-            'created_at' => '24-2-2022 07:29:36',
-            'updated_at' => '24-2-2022 07:29:36',
-        ])->save();
-        OrderItem::create([
-            'qty' => '1',
-            'order_id' => '1',
-            'food_id' => '4',
-            'created_at' => '24-2-2022 07:29:36',
-            'updated_at' => '24-2-2022 07:29:36',
-        ])->save();
-
-        //Order2
-        OrderItem::create([
-            'qty' => '1',
-            'order_id' => '2',
-            'food_id' => '2',
-            'created_at' => '25-2-2022 07:29:36',
-            'updated_at' => '25-2-2022 07:29:36',
-        ])->save();
-
-        OrderItem::create([
-            'qty' => '1',
-            'order_id' => '2',
-            'food_id' => '3',
-            'created_at' => '25-2-2022 07:29:36',
-            'updated_at' => '25-2-2022 07:29:36',
-        ])->save();
-
-        //Order3
-        OrderItem::create([
-            'qty' => '1',
-            'order_id' => '3',
-            'food_id' => '2',
-            'created_at' => '25-2-2022 07:29:36',
-            'updated_at' => '25-2-2022 07:29:36',
-        ])->save();
-
-        OrderItem::create([
-            'qty' => '1',
-            'order_id' => '3',
-            'food_id' => '5',
-            'created_at' => '25-2-2022 07:29:36',
-            'updated_at' => '25-2-2022 07:29:36',
-        ])->save();
-    }
-
-    private function seedStatuses() {
-        //Start Order1 - DineIn
-        Status::create([
-            'status_title' => 'Prepring',
-            'details' => 'Your food is on preparing',
-            'statusable_type' => Order::class,
-            'statusable_id' => 1,
-            'created_at' => '24-2-2022 07:30:00',
-            'updated_at' => '24-2-2022 07:30:00',
-        ])->save();
-
-        Status::create([
-            'status_title' => 'Cooking',
-            'details' => 'Estimate finish serve time will be 30 minit',
-            'statusable_type' => Order::class,
-            'statusable_id' => 1,
-            'created_at' => '24-2-2022 07:33:00',
-            'updated_at' => '24-2-2022 07:33:00',
-        ])->save();
-
-        Status::create([
-            'status_title' => 'Served',
-            'details' => 'Food has been served, enjoy your food',
-            'statusable_type' => Order::class,
-            'statusable_id' => 1,
-            'created_at' => '24-2-2022 08:00:00',
-            'updated_at' => '24-2-2022 08:00:00',
-        ])->save();
-
-        //Order1 - orderItem1 and orderItem2
-        //orderItem1
-        Status::create([
-            'status_title' => 'Preparing',
-            'details' => 'Your food is on preparing',
-            'statusable_type' => OrderItem::class,
-            'statusable_id' => 1,
-            'created_at' => '24-2-2022 07:30:00',
-            'updated_at' => '24-2-2022 07:30:00',
-        ])->save();
-        Status::create([
-            'status_title' => 'Served',
-            'details' => 'Your Food is served',
-            'statusable_type' => OrderItem::class,
-            'statusable_id' => 2,
-            'created_at' => '24-2-2022 07:42:00',
-            'updated_at' => '24-2-2022 07:42:00',
-        ])->save();
-
-        //orderItem2
-        Status::create([
-            'status_title' => 'Preparing',
-            'details' => 'Your drink is on preparing',
-            'statusable_type' => OrderItem::class,
-            'statusable_id' => 2,
-            'created_at' => '24-2-2022 07:30:00',
-            'updated_at' => '24-2-2022 07:30:00',
-        ])->save();
-        Status::create([
-            'status_title' => 'Served',
-            'details' => 'Your Food has been served',
-            'statusable_type' => OrderItem::class,
-            'statusable_id' => 1,
-            'created_at' => '24-2-2022 07:40:00',
-            'updated_at' => '24-2-2022 07:40:00',
-        ])->save();
-        //End Order1 - DineIn
-        //
-        //Start Order2 - Delivery
-        Status::create([
-            'status_title' => 'Submitted',
-            'details' => 'Order is submitted, assigning driver to you...',
-            'statusable_type' => Order::class,
-            'statusable_id' => 2,
-            'created_at' => '25-2-2022 07:30:00',
-            'updated_at' => '25-2-2022 07:30:00',
-        ])->save();
-
-        Status::create([
-            'status_title' => 'Preparing',
-            'details' => 'Order has been assign to a driver, order now is perparing',
-            'statusable_type' => Order::class,
-            'statusable_id' => 2,
-            'created_at' => '25-2-2022 07:35:00',
-            'updated_at' => '25-2-2022 07:35:00',
-        ])->save();
-
-        Status::create([
-            'status_title' => 'Cooking',
-            'details' => 'Estimate serve time within 30 minit',
-            'statusable_type' => Order::class,
-            'statusable_id' => 2,
-            'created_at' => '25-2-2022 07:36:30',
-            'updated_at' => '25-2-2022 07:36:30',
-        ])->save();
-
-        Status::create([
-            'status_title' => 'Out of Delivery',
-            'details' => 'Driver is on the way to you',
-            'statusable_type' => Order::class,
-            'statusable_id' => 2,
-            'created_at' => '25-2-2022 07:50:00',
-            'updated_at' => '25-2-2022 07:50:00',
-        ])->save();
-
-        Status::create([
-            'status_title' => 'Delivered',
-            'details' => 'Driver has delivered your food',
-            'statusable_type' => Order::class,
-            'statusable_id' => 2,
-            'created_at' => '25-2-2022 07:58:00',
-            'updated_at' => '25-2-2022 07:58:00',
-        ])->save();
-
-        //Order2 - orderItem3 and orderItem4
-        //orderItem3
-        Status::create([
-            'status_title' => 'Preparing',
-            'details' => 'Your food is on preparing',
-            'statusable_type' => OrderItem::class,
-            'statusable_id' => 3,
-            'created_at' => '25-2-2022 07:32:30',
-            'updated_at' => '25-2-2022 07:32:30',
-        ])->save();
-        Status::create([
-            'status_title' => 'Served',
-            'details' => 'Your Food is served',
-            'statusable_type' => OrderItem::class,
-            'statusable_id' => 3,
-            'created_at' => '25-2-2022 07:50:00',
-            'updated_at' => '25-2-2022 07:50:00',
-        ])->save();
-
-        //orderItem4
-        Status::create([
-            'status_title' => 'Preparing',
-            'details' => 'Your drink is on preparing',
-            'statusable_type' => OrderItem::class,
-            'statusable_id' => 4,
-            'created_at' => '25-2-2022 07:32:30',
-            'updated_at' => '24-2-2022 07:32:30',
-        ])->save();
-        Status::create([
-            'status_title' => 'Served',
-            'details' => 'Your Food has been served',
-            'statusable_type' => OrderItem::class,
-            'statusable_id' => 4,
-            'created_at' => '25-2-2022 07:50:00',
-            'updated_at' => '25-2-2022 07:50:00',
-        ])->save();
-        //End Order2 - Delivery
-        //
-        //Start Order3 - Delivery
-        Status::create([
-            'status_title' => 'Submitted',
-            'details' => 'Order is submitted, assigning driver to you...',
-            'statusable_type' => Order::class,
-            'statusable_id' => 2,
-            'created_at' => '25-2-2022 07:31:00',
-            'updated_at' => '25-2-2022 07:31:00',
-        ])->save();
-
-        Status::create([
-            'status_title' => 'Preparing',
-            'details' => 'Order has been assign to a driver, order now is perparing',
-            'statusable_type' => Order::class,
-            'statusable_id' => 2,
-            'created_at' => '25-2-2022 07:35:00',
-            'updated_at' => '25-2-2022 07:35:00',
-        ])->save();
-
-        Status::create([
-            'status_title' => 'Cooking',
-            'details' => 'Estimate serve time within 30 minit',
-            'statusable_type' => Order::class,
-            'statusable_id' => 3,
-            'created_at' => '25-2-2022 07:32:00',
-            'updated_at' => '25-2-2022 07:32:00',
-        ])->save();
-
-        Status::create([
-            'status_title' => 'Out of Delivery',
-            'details' => 'Driver is on the way to you',
-            'statusable_type' => Order::class,
-            'statusable_id' => 3,
-            'created_at' => '25-2-2022 07:50:00',
-            'updated_at' => '25-2-2022 07:50:00',
-        ])->save();
-
-        Status::create([
-            'status_title' => 'Delivered',
-            'details' => 'Driver has delivered your food',
-            'statusable_type' => Order::class,
-            'statusable_id' => 3,
-            'created_at' => '25-2-2022 07:58:00',
-            'updated_at' => '25-2-2022 07:58:00',
-        ])->save();
-
-        //Order3 - orderItem5 and orderItem6
-        //orderItem5
-        Status::create([
-            'status_title' => 'Preparing',
-            'details' => 'Your food is on preparing',
-            'statusable_type' => OrderItem::class,
-            'statusable_id' => 5,
-            'created_at' => '25-2-2022 07:32:30',
-            'updated_at' => '25-2-2022 07:32:30',
-        ])->save();
-
-        Status::create([
-            'status_title' => 'Served',
-            'details' => 'Your Food has been served',
-            'statusable_type' => OrderItem::class,
-            'statusable_id' => 5,
-            'created_at' => '25-2-2022 07:50:00',
-            'updated_at' => '25-2-2022 07:50:00',
-        ])->save();
-
-        //orderItem6
-        Status::create([
-            'status_title' => 'Preparing',
-            'details' => 'Your drink is on preparing',
-            'statusable_type' => OrderItem::class,
-            'statusable_id' => 6,
-            'created_at' => '25-2-2022 07:32:30',
-            'updated_at' => '24-2-2022 07:32:30',
-        ])->save();
-        Status::create([
-            'status_title' => 'Served',
-            'details' => 'Your Food has been served',
-            'statusable_type' => OrderItem::class,
-            'statusable_id' => 6,
-            'created_at' => '25-2-2022 07:50:00',
-            'updated_at' => '25-2-2022 07:50:00',
-        ])->save();
-        //End Order2 - Delivery
-    }
-
-    private function seedDeliveries() {
-        //Order2
-        Delivery::create([
-            'track_no' => 'D200202251001',
-            'address' => '555,Jalan LengLong 5/55,Taman Wings,54000,Cheras,Pahang',
-            'staff_id' => '1',
-            'order_id' => '2',
-            'created_at' => '25-2-2022 07:35:00',
-            'updated_at' => '25-2-2022 07:35:00',
-        ])->save();
-        
-        //Order3
-        Delivery::create([
-            'track_no' => 'D200202251002',
-            'address' => '555,Jalan LengLong 5/55,Taman Wings,54000,Cheras,Pahang',
-            'staff_id' => '4',
-            'order_id' => '3',
-            'created_at' => '25-2-2022 07:35:00',
-            'updated_at' => '25-2-2022 07:35:00',
-        ])->save();
-    }
-
-    private function seedDineIns() {
-        DineIn::create([
-            'order_id' => 1,
-            'table_num' => 10,
-            'created_at' => '24-2-2022 07:29:36',
-            'updated_at' => '24-2-2022 07:29:36',
         ])->save();
     }
 

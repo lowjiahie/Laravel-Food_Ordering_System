@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDineInsTable extends Migration {
+class CreateBookingsTable extends Migration {
 
     /**
      * Run the migrations.
@@ -12,12 +12,18 @@ class CreateDineInsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('dine_ins', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->increments("id")->unique();
-            $table->unsignedInteger('order_id')->index();
-            $table->foreign('order_id')
-                    ->references('id')
-                    ->on('orders')
+            $table->string("booking_no")->unique();
+            $table->date("booking_date");
+            $table->time("booking_time");
+            $table->string("booking_state");
+            $table->unsignedInteger("numPersons");
+
+            $table->unsignedInteger("account_id")->index();
+            $table->foreign("account_id")
+                    ->references("id")
+                    ->on("accounts")
                     ->onDelete("cascade");
 
             $table->unsignedInteger("table_num")->index();
@@ -25,7 +31,7 @@ class CreateDineInsTable extends Migration {
                     ->references("table_num")
                     ->on("tables")
                     ->onDelete("cascade");
-            
+
             $table->timestamps();
         });
     }
@@ -36,7 +42,7 @@ class CreateDineInsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('dine_ins');
+        Schema::dropIfExists('bookings');
     }
 
 }

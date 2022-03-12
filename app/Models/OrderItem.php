@@ -9,10 +9,6 @@ class OrderItem extends Model {
 
     use HasFactory;
 
-    public function status() {
-        return $this->morphMany(Status::class, 'statusable');
-    }
-    
     public function order(){
         return $this->belongsTo(Order::class);
     }
