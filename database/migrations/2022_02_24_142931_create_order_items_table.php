@@ -15,6 +15,7 @@ class CreateOrderItemsTable extends Migration {
         Schema::create('order_items', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->integer('qty');
+            $table->string('status');
             
             $table->unsignedInteger('order_id')->index();
             $table->foreign('order_id')

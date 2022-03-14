@@ -8,20 +8,15 @@ use App\Models\Beverage;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Customer;
-use App\Models\Delivery;
-use App\Models\DineIn;
 use App\Models\Dish;
 use App\Models\Food;
 use App\Models\Order;
 use App\Models\OrderItem;
-use App\Models\Payment;
+use App\Models\Booking;
 use App\Models\Post;
-use App\Models\Promotion;
 use App\Models\Reply;
 use App\Models\Staff;
-use App\Models\Status;
 use App\Models\Table;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder {
 
@@ -31,29 +26,25 @@ class DatabaseSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        // \App\Models\User::factory(10)->create();
         $this->seedAccountsStaffOrCus();
         $this->seedCategories();
         $this->seedFood();
         $this->seedPosts();
         $this->seedComments();
         $this->seedReplies();
-//        $this->seedPromotions();
         $this->seedTable();
         $this->seedOrders();
         $this->seedOrderItems();
-//        $this->seedPayments();
-//        $this->seedDineIns();
-//        $this->seedDeliveries();
-//        $this->seedStatuses();
+        $this->seedBookingItems();
     }
 
     private function seedAccountsStaffOrCus() {
+        //Staff
         Staff::create([
-            'role' => 'D',
+            'role' => 'S', //service crew
         ])->save();
 
-        Account::create([
+        Account::create([//1
             'accountName' => 'LEE WANG SENG',
             'gender' => 'M',
             'accountEmail' => 'leewangseng123@gmail.com',
@@ -64,10 +55,10 @@ class DatabaseSeeder extends Seeder {
         ])->save();
 
         Staff::create([
-            'role' => 'A',
+            'role' => 'A', //Admin
         ])->save();
 
-        Account::create([
+        Account::create([//2
             'accountName' => 'JING SEE YUAN',
             'gender' => 'F',
             'accountEmail' => 'jingseeyuan123@gmail.com',
@@ -78,10 +69,10 @@ class DatabaseSeeder extends Seeder {
         ])->save();
 
         Staff::create([
-            'role' => 'C',
+            'role' => 'C', //Chief
         ])->save();
 
-        Account::create([
+        Account::create([//3
             'accountName' => 'QING YEE XUAN',
             'gender' => 'F',
             'accountEmail' => 'qingyeexuan123@gmail.com',
@@ -91,25 +82,12 @@ class DatabaseSeeder extends Seeder {
             'accountable_id' => 3,
         ])->save();
 
-        Staff::create([
-            'role' => 'D',
-        ])->save();
-
-        Account::create([
-            'accountName' => 'CHANG WEN JIA',
-            'gender' => 'M',
-            'accountEmail' => 'wenjiachang123@gmail.com',
-            'accountAddress' => '777,Jalan LengLong 6/66,Taman Wings,54000,Cheras,Kuala Lumpur',
-            'password' => 'wenjiachang123',
-            'accountable_type' => Staff::class,
-            'accountable_id' => 4,
-        ])->save();
-
+        //Customer
         Customer::create([
             'DOB' => '2000-12-31',
         ])->save();
 
-        Account::create([
+        Account::create([//4
             'accountName' => 'HEE FONG SHENG',
             'gender' => 'F',
             'accountEmail' => 'heefongsheng123@gmail.com',
@@ -117,6 +95,20 @@ class DatabaseSeeder extends Seeder {
             'password' => 'heefongsheng123',
             'accountable_type' => Customer::class,
             'accountable_id' => 1,
+        ])->save();
+
+        Customer::create([
+            'DOB' => '2001-01-06',
+        ])->save();
+
+        Account::create([//5
+            'accountName' => 'LOW WEI JIA',
+            'gender' => 'F',
+            'accountEmail' => 'weijialow123@gmail.com',
+            'accountAddress' => '100,Jalan LengLong 3/30,Taman Wings,54000,Cheras,Melaka',
+            'password' => 'weijialow123',
+            'accountable_type' => Customer::class,
+            'accountable_id' => 2,
         ])->save();
     }
 
@@ -322,7 +314,7 @@ class DatabaseSeeder extends Seeder {
             'table_num' => 00,
             'num_seats' => 0,
         ])->save();
-        
+
         Table::create([
             'table_num' => 10,
             'num_seats' => 8,
@@ -342,14 +334,20 @@ class DatabaseSeeder extends Seeder {
             'table_num' => 40,
             'num_seats' => 4,
         ])->save();
+
+        Table::create([
+            'table_num' => 50,
+            'num_seats' => 2,
+        ])->save();
     }
 
     private function seedOrders() {
         Order::create([
             'note' => 'New year lou shang after lunch',
             'serviceMode' => 'Dine-In',
-            'customer_id' => 1,
-            'table_num'=>20,
+            'account_id' => 4,
+            'table_num' => 20,
+            'status' => '',
             'created_at' => '24-2-2022 07:29:36',
             'updated_at' => '24-2-2022 07:29:36',
         ])->save();
@@ -357,19 +355,117 @@ class DatabaseSeeder extends Seeder {
         Order::create([
             'note' => 'New year lou shang set',
             'serviceMode' => 'Dine-In',
-            'customer_id' => 1,
-            'table_num'=>30,
+            'account_id' => 5,
+            'table_num' => 30,
+            'status' => '',
             'created_at' => '25-2-2022 07:29:36',
             'updated_at' => '25-2-2022 07:29:36',
         ])->save();
 
         Order::create([
             'note' => 'Cutlery is not needed',
-            'serviceMode' => 'Dine-In',
-            'customer_id' => 1,
-            'table_num'=>10,
+            'serviceMode' => 'Take-Away',
+            'account_id' => 4,
+            'table_num' => 00,
+            'status' => '',
             'created_at' => '26-2-2022 07:29:36',
             'updated_at' => '26-2-2022 07:29:36',
+        ])->save();
+    }
+
+    private function seedOrderItems() {
+        //Order1
+        OrderItem::create([
+            'qty' => '2',
+            'order_id' => '1',
+            'food_id' => '1',
+            'status' => 'preparing',
+            'created_at' => '24-2-2022 07:29:36',
+            'updated_at' => '24-2-2022 07:29:36',
+        ])->save();
+        OrderItem::create([
+            'qty' => '1',
+            'order_id' => '1',
+            'food_id' => '4',
+            'status' => 'preparing',
+            'created_at' => '24-2-2022 07:29:36',
+            'updated_at' => '24-2-2022 07:29:36',
+        ])->save();
+
+        //Order2
+        OrderItem::create([
+            'qty' => '1',
+            'order_id' => '2',
+            'food_id' => '2',
+            'status' => 'served',
+            'created_at' => '25-2-2022 07:29:36',
+            'updated_at' => '25-2-2022 07:29:36',
+        ])->save();
+
+        OrderItem::create([
+            'qty' => '1',
+            'order_id' => '2',
+            'food_id' => '3',
+            'status' => 'served',
+            'created_at' => '25-2-2022 07:29:36',
+            'updated_at' => '25-2-2022 07:29:36',
+        ])->save();
+
+        //Order3
+        OrderItem::create([
+            'qty' => '1',
+            'order_id' => '3',
+            'food_id' => '2',
+            'status' => 'preparing',
+            'created_at' => '25-2-2022 07:29:36',
+            'updated_at' => '25-2-2022 07:29:36',
+        ])->save();
+
+        OrderItem::create([
+            'qty' => '1',
+            'order_id' => '3',
+            'food_id' => '5',
+            'status' => 'preparing',
+            'created_at' => '25-2-2022 07:29:36',
+            'updated_at' => '25-2-2022 07:29:36',
+        ])->save();
+    }
+
+    private function seedBookingItems() {
+        Booking::create([
+            'booking_no' => 'B2022031414',
+            'booking_date' => '2022-03-14',
+            'booking_time' => '13:30:00',
+            'booking_state' => 'pending',
+            'numPersons' => 2,
+            'account_id' => 4,
+            'table_num' => 20,
+            'created_at' => '14-03-2022 08:30:36',
+            'updated_at' => '14-03-2022 08:30:36',
+        ])->save();
+
+        Booking::create([
+            'booking_no' => 'B2022031525',
+            'booking_date' => '2022-03-15',
+            'booking_time' => '14:00:00',
+            'booking_state' => 'booked',
+            'numPersons' => 4,
+            'account_id' => 5,
+            'table_num' => 40,
+            'created_at' => '14-03-2022 10:30:00',
+            'updated_at' => '14-03-2022 10:30:00',
+        ])->save();
+
+        Booking::create([
+            'booking_no' => 'B2022031534',
+            'booking_date' => '2022-03-15',
+            'booking_time' => '16:00:00',
+            'booking_state' => 'canceled',
+            'numPersons' => 4,
+            'account_id' => 4,
+            'table_num' => 40,
+            'created_at' => '14-03-2022 10:30:00',
+            'updated_at' => '14-03-2022 10:30:00',
         ])->save();
     }
 
