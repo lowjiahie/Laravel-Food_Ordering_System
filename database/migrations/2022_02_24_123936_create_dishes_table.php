@@ -14,15 +14,14 @@ class CreateDishesTable extends Migration {
     public function up() {
         Schema::create('dishes', function (Blueprint $table) {
             $table->increments('id')->unique();
-            
+
             $table->string('preparationTime');
-            $table->boolean('dairyFree');
-            $table->boolean('glutenFree');
+            $table->boolean('seafoodFree');
             $table->boolean('nutFree');
             $table->boolean('veganFriendly');
             $table->boolean('vegetarianFriendly');
 
-            
+
             $table->timestamps();
         });
     }

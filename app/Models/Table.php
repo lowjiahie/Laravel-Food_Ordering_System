@@ -13,8 +13,8 @@ class Table extends Model {
         return $this->hasMany(Order::class);
     }
     
-    public function dineIn(){
-        return $this->hasMany(DineIn::class);
+    public function booking() {
+        return $this->hasMany(Booking::class);
     }
 
 }

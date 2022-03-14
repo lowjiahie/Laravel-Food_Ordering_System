@@ -13,7 +13,4 @@ class Staff extends Model
         return $this->morphOne(Account::class, 'accountable');
     }
     
-    public function delivery(){
-        return $this->hasMany(Delivery::class);
-    }
 }

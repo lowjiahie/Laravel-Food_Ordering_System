@@ -13,9 +13,9 @@ class CreateBeverangesTable extends Migration {
      */
     public function up() {
         Schema::create('beverages', function (Blueprint $table) {
-            $table->increments('id')->unique();
-            $table->string('size');
-            $table->string('ice');
+          $table->increments('id')->unique();
+            $table->boolean('hotDrink');
+            $table->boolean('coldDrink');
             $table->boolean('caffeine');
             $table->timestamps();
         });
