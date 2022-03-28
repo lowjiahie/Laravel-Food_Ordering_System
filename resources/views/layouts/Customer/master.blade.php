@@ -56,8 +56,8 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Food</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Dish</a>
-                                    <a class="dropdown-item" href="#">Beverage</a>
+                                    <a class="dropdown-item" href="/dishMenu">Dish</a>
+                                    <a class="dropdown-item" href="/beverageMenu">Beverage</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">

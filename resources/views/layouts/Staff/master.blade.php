@@ -75,7 +75,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">F&B functions:</h6>
                             <a class="collapse-item" href="#">Dish</a>
-                            <a class="collapse-item" href="#">Beverages</a>
+                            <a class="collapse-item" href="/beverageManagement">Beverages</a>
                         </div>
                     </div>
                 </li>
