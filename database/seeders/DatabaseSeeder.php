@@ -117,6 +117,7 @@ class DatabaseSeeder extends Seeder {
             'topic' => 'Recommendation',
             'post_desc' => 'It is Malaysia traditional breakfast.',
             'account_id' => '2', //admin
+            'post_status' => 'Posted', //admin
         ])->save();
     }
 

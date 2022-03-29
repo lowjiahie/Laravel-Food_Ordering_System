@@ -16,13 +16,13 @@ class CreatePostsTable extends Migration {
             $table->increments('id')->unique();
             $table->string('topic');
             $table->string('post_desc');
-            
+            $table->string('post_status')->default('Posted');
             $table->unsignedInteger('account_id')->index();
             $table->foreign('account_id')->references('id')
                     ->on('accounts')
                     ->onDelete('cascade');
-            
             $table->timestamps();
+            
         });
     }
 

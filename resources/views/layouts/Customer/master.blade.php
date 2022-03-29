@@ -41,13 +41,13 @@
                         Hǎinán Kopitiam
                     </a>
                     <!--End Logo-->
-                    
+
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarColor01">
-                        
+
                         <!--Left side nav-bar - nav-link -->
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
@@ -63,12 +63,13 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Forum</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">My Post</a>
+                                     <a class="dropdown-item" href="post">Forum</a>
+                                    <a class="dropdown-item" href="myPost">My Post</a>
                                 </div>
                             </li>
                         </ul>
                         <!--End Left side nav-bar - nav-link -->
-                        
+
                         <!--Right side navbar - cart && user -->
                         <div class="set-right">
                             <ul class="navbar-nav me-auto">
@@ -96,11 +97,11 @@
                             </ul>
                         </div>
                         <!--End Right side navbar - cart && user -->
-                        
+
                     </div>
                 </div>
             </nav>
-             <!--End Nav bar -->
+            <!--End Nav bar -->
             <div class="container uper">
                 @yield('content')
             </div>
