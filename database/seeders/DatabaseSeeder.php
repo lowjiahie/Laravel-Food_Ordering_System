@@ -419,22 +419,24 @@ class DatabaseSeeder extends Seeder {
 
     private function seedBookingItems() {
         Booking::create([
-            'booking_no' => 'B2022031414',
-            'booking_date' => '2022-03-14',
-            'booking_time' => '13:30:00',
-            'booking_state' => 'pending',
+            'booking_no' => 'B2022031414', //id format{B-date(year,month,date)-idNo-cusID}
+            'nickname' => 'Alex',
+            'cus_phoneNum' => '0163722396',
+            'booking_datetime' => '2022-03-14 13:30:00',
+            'state' => 'pending',
             'numPersons' => 2,
             'account_id' => 4,
-            'table_num' => 20,
+            'table_num' => NULL,
             'created_at' => '14-03-2022 08:30:36',
             'updated_at' => '14-03-2022 08:30:36',
         ])->save();
 
         Booking::create([
             'booking_no' => 'B2022031525',
-            'booking_date' => '2022-03-15',
-            'booking_time' => '14:00:00',
-            'booking_state' => 'booked',
+            'nickname' => 'Alice',
+            'cus_phoneNum' => '0166722336',
+            'booking_datetime' => '2022-03-15 14:00:00',
+            'state' => 'booked',
             'numPersons' => 4,
             'account_id' => 5,
             'table_num' => 40,
@@ -444,14 +446,28 @@ class DatabaseSeeder extends Seeder {
 
         Booking::create([
             'booking_no' => 'B2022031534',
-            'booking_date' => '2022-03-15',
-            'booking_time' => '16:00:00',
-            'booking_state' => 'canceled',
+            'nickname' => 'Alex',
+            'cus_phoneNum' => '0163722396',
+            'booking_datetime' => '2022-03-15 16:00:00',
+            'state' => 'cancelled',
             'numPersons' => 4,
             'account_id' => 4,
             'table_num' => 40,
             'created_at' => '14-03-2022 10:30:00',
             'updated_at' => '14-03-2022 10:30:00',
+        ])->save();
+
+        Booking::create([
+            'booking_no' => 'B2022032045',
+            'nickname' => 'Alex',
+            'cus_phoneNum' => '0163722396',
+            'booking_datetime' => '2022-03-20 14:00:00',
+            'state' => 'reached',
+            'numPersons' => 4,
+            'account_id' => 5,
+            'table_num' => 40,
+            'created_at' => '19-03-2022 10:30:00',
+            'updated_at' => '19-03-2022 10:30:00',
         ])->save();
     }
 

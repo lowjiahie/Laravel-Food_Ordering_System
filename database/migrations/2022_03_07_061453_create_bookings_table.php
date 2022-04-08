@@ -15,19 +15,20 @@ class CreateBookingsTable extends Migration {
         Schema::create('bookings', function (Blueprint $table) {
             $table->increments("id")->unique();
             $table->string("booking_no")->unique();
-            $table->date("booking_date");
-            $table->time("booking_time");
-            $table->string("booking_state");
+            $table->dateTime("booking_datetime");
+            $table->string("state");
+            $table->string("nickname");
+            $table->string("cus_phoneNum");
             $table->unsignedInteger("numPersons");
-
-            $table->unsignedInteger("account_id")->index();
+            
+            $table->unsignedInteger("account_id");
             $table->foreign("account_id")
                     ->references("id")
                     ->on("accounts")
                     ->onDelete("cascade");
 
-            $table->unsignedInteger("table_num")->index();
-            $table->foreign("table_num")
+            $table->unsignedInteger("table_num")->nullable();
+            $table->foreign("table_num")->nullable()
                     ->references("table_num")
                     ->on("tables")
                     ->onDelete("cascade");

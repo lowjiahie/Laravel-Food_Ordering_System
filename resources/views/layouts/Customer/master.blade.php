@@ -12,7 +12,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-
+        
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -41,13 +41,13 @@
                         Hǎinán Kopitiam
                     </a>
                     <!--End Logo-->
-                    
+
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarColor01">
-                        
+
                         <!--Left side nav-bar - nav-link -->
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
@@ -66,9 +66,12 @@
                                     <a class="dropdown-item" href="#">My Post</a>
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('Customer.Booking.add.viewAddBooking')}}">Booking</a>
+                            </li>
                         </ul>
                         <!--End Left side nav-bar - nav-link -->
-                        
+
                         <!--Right side navbar - cart && user -->
                         <div class="set-right">
                             <ul class="navbar-nav me-auto">
@@ -88,7 +91,7 @@
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="#">Profile</a>
                                         <a class="dropdown-item" href="#">My Order</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <a class="dropdown-item" href="{{route('Customer.Booking.list.RecentBooking')}}">My Bookings</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">LogOut</a>
                                     </div>
@@ -96,11 +99,11 @@
                             </ul>
                         </div>
                         <!--End Right side navbar - cart && user -->
-                        
+
                     </div>
                 </div>
             </nav>
-             <!--End Nav bar -->
+            <!--End Nav bar -->
             <div class="container uper">
                 @yield('content')
             </div>

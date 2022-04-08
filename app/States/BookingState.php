@@ -1,16 +1,22 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace App\States;
 
-/**
- * Description of BookingState
- *
- * @author LOW JIA HIE
- */
-class BookingState {
-    //put your code here
+use Spatie\ModelStates\State;
+use Spatie\ModelStates\StateConfig;
+
+abstract class BookingState extends State {
+
+    abstract public function description(): string;
+
+    public static function config(): StateConfig {
+        return parent::config()
+                        ->default(Pending::class)
+                        ->allowTransition(Pending::class, Booked::class)
+                        ->allowTransition(Pending::class, Cancelled::class)
+                        ->allowTransition(Booked::class, Reached::class)
+                        ->allowTransition(Booked::class, Cancelled::class)
+                ;
+    }
+
 }

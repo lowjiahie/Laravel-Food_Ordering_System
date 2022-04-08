@@ -12,6 +12,8 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "mtownsend/response-xml": "2.0.0",
+        "spatie/array-to-xml": "^2.16",
         "spatie/laravel-model-states": "^2.2"
     },
     "require-dev": {

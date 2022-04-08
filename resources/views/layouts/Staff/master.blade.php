@@ -114,30 +114,13 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                         <i class="fas fa-border-all"></i>
-                        <span>Table Management</span>
+                        <span>Booking Management</span>
                     </a>
                     <div id="collapseFour" class="collapse" aria-labelledby="tableFour" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Table Functions :</h6>
-                            <a class="collapse-item" href="#">1</a>
-                            <a class="collapse-item" href="#">2</a>
-                            <a class="collapse-item" href="#">3</a>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Nav Item - Delivery -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                        <i class="fas fa-truck"></i>
-                        <span>Delivery Handle</span>
-                    </a>
-                    <div id="collapseFive" class="collapse" aria-labelledby="deliveryFive" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Delivery Functions :</h6>
-                            <a class="collapse-item" href="#">1</a>
-                            <a class="collapse-item" href="#">2</a>
-                            <a class="collapse-item" href="#">3</a>
+                            <h6 class="collapse-header">Booking Functions :</h6>
+                            <a class="collapse-item" href="{{route('Staff.Booking.listbooking')}}">Booking Status Update</a>
+                            <a class="collapse-item" href="{{route('Staff.Booking.showAll')}}">View All Booking Status</a>
                         </div>
                     </div>
                 </li>
