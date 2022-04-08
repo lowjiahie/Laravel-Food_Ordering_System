@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<?xml-stylesheet  type="text/xsl" href="xsl/comment.xsl"?>
+
+<comments>
+    <replies createdDate="2022-4-8" updatedDate="2022-4-8">
+        <id>20</id>
+        <postId>10</postId>
+        <description>Yayyy, love your nasi lemak very much. It's so delicious!!!!</description>
+        <account_id>1</account_id>
+    </replies>
+    
+    <replies createdDate="2022-4-8" updatedDate="2022-4-8">
+        <id>21</id>
+        <postId>10</postId>
+        <description>Same here!!!</description>
+        <account_id>2</account_id>
+    </replies>
+    
+     <replies createdDate="2022-4-8" updatedDate="2022-4-8">
+        <id>22</id>
+        <postId>10</postId>
+        <description>Hope that can add on a drumstick as well!!</description>
+        <account_id>3</account_id>
+    </replies>
+    
+     <replies createdDate="2022-4-8" updatedDate="2022-4-8">
+        <id>23</id>
+        <postId>10</postId>
+        <description>I think so so only! Nasi Kerabu da best!!</description>
+        <account_id>4</account_id>
+    </replies>
+</comments>

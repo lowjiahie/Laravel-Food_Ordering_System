@@ -1,94 +1,30 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ForumValidation;
 use App\Models\Post;
+use App\Models\Comment;
 
-class forumController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+class forumController extends Controller {
+
+    public function index() {
         $post = Post::all();
         return view('forum', compact('post'));
     }
-    
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+    public function create() {
         return view('addNewPost');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    
-    public function store(ForumValidation $request)
-    {
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-     public function show($id)
-    {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $post = Post::find($id);
-        return view('editPost', compact('post', 'id'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(ForumValidation $request, $id)
-    {
-        $post = Post::find($id);
-        $post->topic = $request->get('topic');
-        $post->post_desc = $request->get('desc');
-        $post->save();
-        return redirect('post');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $post = Post::find($id);
-        $post->delete();
-        return redirect('post')->with('success', 'Information has been deleted');
+    public function viewCommentByID(Request $request) {
+        $viewPostID = $request->get('id');
+        $comment = Comment::join('posts','posts.id','=','comments.post_id')
+                ->join('accounts','accounts.id','=','comments.account_id')
+                ->where('post_id', 'LIKE', '%' . $viewPostID . '%')
+                ->select('post_id','accounts.accountName as commentAccName','comments.comment_desc', 'posts.created_at as postCreated', 'posts.updated_at as postUpdated','comments.created_at as commentCreated','comments.updated_at as commentUpdated')
+                ->get();
+        return view('viewCommentPage', compact('comment'));
     }
 }

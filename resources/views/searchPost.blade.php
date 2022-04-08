@@ -2,58 +2,12 @@
 @section('content')
 <title>Searched Results</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
-    @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
-    @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js');
-    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-    @import url('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js');
-    body {
-        height: 100%
-    }
 
-    body {
-        display: grid;
-        place-items: center;
-        font-family: 'Source Sans Pro', sans-serif;
-        background: white;
-    }
-
-    .card {
-        position: relative;
-        display: flex;
-        padding: 20px;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        background-color: #fff;
-        background-clip: border-box;
-        border: 1px solid #d2d2dc;
-        border-radius: 11px;
-        -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
-        -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
-        box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
-    }
-
-    .media img {
-        width: 60px;
-        height: 60px
-    }
-
-    .reply a {
-        text-decoration: none
-    }
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('sbadmin2/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 </style>
 </br></br>
-<div class="container uper">
-    <div class="container mb-5 mt-5">
-        <div class="card">
-            <div class="row">
-                <div class="col-md-12">
+
                     <h3 class="text-center mb-5">Searched Results </h3>
-                    <div class="row">
-                        <div class="col-md-12">
+                    
                             <form action="{{action('App\Http\Controllers\myPostController@searchByTopic')}}" method="POST" role="search">
                                 @csrf
                                 <div class="input-group">
@@ -65,7 +19,7 @@
                                     </span>
                                 </div>
                             </form>                          
-                            <form action="addNewPost" align="right"><input type="submit" value="Add A New Post"></input></form>
+                            <form action="addNewPost" align="right"><input type="submit" class="btn btn-success" value="Add A New Post"></input></form>
                             @foreach($post as $posts)
                             <div class="media"> <img class="mr-3 rounded-circle" alt="Bootstrap Media Preview" src="https://i.imgur.com/stD0Q19.jpg" />
                                 <div class="media-body">
@@ -95,11 +49,5 @@
                                 </div>
                             </div>
                             @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 @endsection

@@ -27,16 +27,20 @@ Route::get("/Forum", function () {
     return view('forum');
 });
 
-Route::get("/Comment", function () {
-    return view('comment');
-});
-
 Route::get("/myPost", function () {
     return view('myPost');
 });
 
- Route::post('/searchPost', 'App\Http\Controllers\myPostController@searchByTopic');
+
+Route::post('/addNewComment','App\Http\Controllers\commentController@addInByID');
+Route::post('/searchPost', 'App\Http\Controllers\myPostController@searchByTopic');
+Route::post('/viewComment','App\Http\Controllers\forumController@viewCommentByID');
+Route::post('/sendPostID','App\Http\Controllers\commentController@viewByPostID');
 
 Route::resource('comment', commentController::class);
 Route::resource('post', forumController::class);
 Route::resource('myPost', myPostController::class);
+
+Route::get('viewxmlReplies',[commentController::class,'xmlRead']);
+
+

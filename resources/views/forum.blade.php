@@ -46,6 +46,7 @@
     <link href="{{ asset('sbadmin2/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 </style>
 </br></br>
+<input type="">
 <div class="container uper">
     <div class="container mb-5 mt-5">
         <div class="card">
@@ -66,29 +67,35 @@
                                     </span>
                                 </div>
                             </form>                             
-                            <form action="addNewPost" align="right"><input type="submit" value="Add A New Post"></input></form>
+                            <form action="addNewPost" align="right"><input type="submit" class="btn btn-success" value="Add A New Post"></input></form>
+                            Please select an account to procees:</br>
+                            <input type="radio" id="1" name="account_id" value="1">
+                            <label for="1">1</label><br>
+                            <input type="radio" id="2" name="account_id" value="2">
+                            <label for="2">2</label><br>  
+                            <input type="radio" id="3" name="account_id" value="3">
+                            <label for="3">3</label><br><br>
                             @foreach($post as $posts)
-                            <div class="media"> <img class="mr-3 rounded-circle" alt="Bootstrap Media Preview" src="https://i.imgur.com/stD0Q19.jpg" />
-                                <div class="media-body">
-                                    <div class="row">
-                                        <div class="col-8 d-flex">
-                                            <h5>{{$posts['id']}}</h5> <span><b>Created at: </b> {{$posts['created_at']}}<b> Updated at: </b>{{$posts['updated_at']}}</span>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="pull-right reply"> <form action="comment" align="right"><i class="fa fa-reply"><span> <input type="submit" border="0" value="Reply"></span></i></form></div>
-                                        </div>
-                                    </div><b>Topic : {{$posts['topic']}}</b></br></br>{{$posts['post_desc']}}
-                                    <div class="media mt-4"> <a class="pr-3" href="#"><img class="rounded-circle" alt="Bootstrap Media Another Preview" src="https://i.imgur.com/xELPaag.jpg" /></a>     
-                                        <div class="media-body">
-                                            <div class="row">
-                                                <div class="col-12 d-flex">
-                                                    <h5></h5> <span><b>Reply On: </b>{{$posts['created_at']}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @php
+                            $accName= App\Models\Account::where('id', '=', $posts->account_id)->first();
+                            @endphp
+                          
+                            <table>
+                                <tr>
+                                    <td> {{$accName->accountName}}</td>
+                                    <td><b>Created at: </b> {{$posts['created_at']}}<b> Updated at: </b>{{$posts['updated_at']}}</td>
+                                    <td><form action="{{action('App\Http\Controllers\commentController@viewByPostID') }}" method="POST">@csrf<input type="hidden" name="id" value="{{$posts['id']}}"><button type="submit" class="btn btn-success">Add Comment</button></form>
+                                    <td><form action="{{action('App\Http\Controllers\forumController@viewCommentByID')}}" method="POST" >@csrf <button type="submit" class="btn btn-success"  name="id" value="{{  $posts['id']}}">View Comments</button></form></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Topic : {{$posts['topic']}}</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Description: {{$posts['post_desc']}}</td>
+                                </tr>
+                            </table>
                             @endforeach
                         </div>
                     </div>
