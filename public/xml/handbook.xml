@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<?xml-stylesheet type="text/xsl" href="handbook.xsl"?>
+<foodList>
+    <dishes>
+        <dish type="True">
+            <foodName>
+                Chicken Rice
+            </foodName>
+            <foodDescription>
+                Comes with Homemade Soup
+            </foodDescription>
+            <price>
+                10.99
+            </price>
+            <quantity>
+                40
+            </quantity>
+        </dish>
+        <dish type="True">
+            <foodName>
+                Char Kuey Teow
+            </foodName>
+            <foodDescription>
+                Taste of Hainan
+            </foodDescription>
+            <price>
+                9
+            </price>
+            <quantity>
+                10
+            </quantity>
+        </dish>
+        <dish type="False">
+            <foodName>
+                Melting mango
+            </foodName>
+            <foodDescription>
+                Mango Cake that melts in your mouth
+            </foodDescription>
+            <price>
+                29
+            </price>
+            <quantity>
+                1500
+            </quantity>
+            <comment>1. Pricy and High Quantity at once - which is a waste of money and low quality</comment>
+        </dish>
+        <dish type="False">
+            <foodName>
+                Vegan Nasi Lemak
+            </foodName>
+            <foodDescription>
+                All Plant-Based
+            </foodDescription>
+            <price>
+                15
+            </price>
+            <quantity>
+                1000
+            </quantity>
+            <comment>2. High Quantity at once - which is a waste of money and low quality</comment>
+        </dish>
+    </dishes>
+    <beverages>
+        <beverage type="True">
+            <foodName>
+                Kopi O
+            </foodName>
+            <foodDescription>
+                Homemade Coffee Bean
+            </foodDescription>
+            <price>
+                5
+            </price>
+            <quantity>
+                50 
+            </quantity>
+        </beverage>
+        <beverage type="False">
+            <foodName>
+                Dark Energetic Coffee
+            </foodName>
+            <foodDescription>
+                Drink to stay awake
+            </foodDescription>
+            <price>
+                11 for 2 cups
+            </price>
+            <quantity>
+                unlimited 
+            </quantity>
+            <comment>1. Give price per unit and provide specific quantity</comment>
+        </beverage>
+        <beverage type="True">
+            <foodName>
+                Teh Tarik
+            </foodName>
+            <foodDescription>
+                Taste of Hainan
+            </foodDescription>
+            <price>
+                6
+            </price>
+            <quantity>
+                30 
+            </quantity>
+        </beverage>
+        <beverage type="True">
+            <foodName>
+                Green Tea
+            </foodName>
+            <foodDescription>
+                Tea Bag and Water Refillable
+            </foodDescription>
+            <price>
+                5.5
+            </price>
+            <quantity>
+                20 
+            </quantity>
+        </beverage>
+        <beverage type="False">
+            <foodName>
+                Green Tea from Japan
+            </foodName>
+            <foodDescription>
+                You will feel like you are in Japan
+            </foodDescription>
+            <price>
+                5.5
+            </price>
+            <quantity>
+                As long as you want
+            </quantity>
+            <comment>2. Do not overpraise the name and description and provide specific the quantity </comment>
+        </beverage>
+    </beverages>
+</foodList>
+    

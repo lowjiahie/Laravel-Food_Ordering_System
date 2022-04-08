@@ -27,75 +27,15 @@
                         <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
                         <!-- Credit card form tabs -->
                             <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
-                                <li class="nav-item"> <a data-toggle="pill" href="#adddish" class="nav-link active "> <i class="fas fa-plus-circle"></i>&#160 Create </a> </li>
-                                <li class="nav-item"> <a data-toggle="pill" href="#update-deletedish" class="nav-link "> <i class="fas fa-folder"></i>&#160 Update / Delete</a> </li>
+                                <li class="nav-item"> <a data-toggle="pill" href="#update-deletedish" class="nav-link  active "> <i class="fas fa-folder"></i>&#160 Update / Delete</a> </li>
+                                <li class="nav-item"> <a data-toggle="pill" href="#adddish" class="nav-link"> <i class="fas fa-plus-circle"></i>&#160 Create </a> </li>
                             </ul>
                         </div> 
                         <!-- End -->
                         <!-- Add Dish form content -->
                         <div class="tab-content">
-                        <!-- Add Dish -->
-                            <div id="adddish" class="tab-pane fade show active pt-3">
-                                <form role="form">
-                                    <div class="form-group"> 
-                                        <label for=dish_name">
-                                            <h6>Name</h6>
-                                        </label>
-                                        <input type="text" name=dish_name" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group"> 
-                                        <label for=dish_name">
-                                            <h6>Name</h6>
-                                        </label>
-                                        <input type="text" name=dish_name" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group"> 
-                                        <label for=dish_description">
-                                            <h6>Description</h6>
-                                        </label>
-                                        <input type="text" name=dish_description" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group"> 
-                                        <label for=dish_price">
-                                            <h6>Price</h6>
-                                        </label>
-                                        <input type="text" name=dish_price" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group"> 
-                                        <label for=dish_ranking">
-                                            <h6>Number Placing in Sales</h6>
-                                        </label>
-                                        <input type="number" name=dish_ranking" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group"> 
-                                        <label for=dish_quantity">
-                                            <h6>Quantity</h6>
-                                        </label>
-                                        <input type="number" name=dish_quantity" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group"> 
-                                        <label for=dish_image">
-                                            <h6>Upload Image</h6>
-                                        </label>
-                                        <input type="text" name=dish_image" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group checkboxInline">
-                                        <label for=dish_option">
-                                            <h6>Option Available</h6>
-                                        </label></br>
-                                        <input type="checkbox">Seafood-Free 
-                                         &#160<input type="checkbox">Nut-Free
-                                         &#160<input type="checkbox">Vegetarian-Friendly
-                                         &#160<input type="checkbox">Vegan-Friendly
-                                    </div>
-                                    <div class="card-footer"> 
-                                        <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Submission </button>
-                                    </div>
-                                </form>
-                            </div>        
-                            <!-- End -->
-                            <!-- Update and Delete Dish -->
-                            <div id="update-deletedish" class="tab-pane fade pt-3" style=".container {
+                            <!-- Update -->
+                            <div id="update-deletedish" class="tab-pane fade show active pt-3" style=".container {
                                 padding: 2rem 0rem;
                               }
 
@@ -131,7 +71,7 @@
                                                           <td>{{ $value-> category }}</td>
                                                           <td>
                                                             <a type="button" id="popup" href="{{url('dishManagement/'. $value->id)}}" class="btn btn-success""><i class="fas fa-edit"></i></a>
-                                                            <a type="button" id="popup" class="btn btn-danger" onclick="confirmation('{{$value-> foodName}}', '{{ json_encode($value))" href="{{url('dishManagement/destroy/'. $value->id)}}"><i class="far fa-trash-alt"></i></a>
+                                                            <a type="button" id="popup" class="btn btn-danger" onclick="" href="{{url('dishManagement/destroy/'. $value->id)}}"><i class="far fa-trash-alt"></i></a>
                                                           </td>
                                                         </tr>
                                                     @endforeach
@@ -142,11 +82,71 @@
                                                 @endif
                                             </tbody>
                                         </table>
+                                        {!! $dishes->links() !!}
                                       </div>
                                     </div>
                                 </div>
                             </div>
-                            
+                            <!-- Add Dish -->
+                            <div id="adddish" class="tab-pane fade pt-3">
+                                <form role="form">
+                                    <div class="form-group"> 
+                                        <label for=dish_name">
+                                            <h6>Name</h6>
+                                        </label>
+                                        <input type="text" name=dish_name" class="form-control " required> 
+                                    </div>
+                                    <div class="form-group"> 
+                                        <label for=dish_category">
+                                            <h6>Category</h6>
+                                        </label>
+                                        <input type="text" name=dish_category" class="form-control " required> 
+                                    </div>
+                                    <div class="form-group"> 
+                                        <label for=dish_description">
+                                            <h6>Description</h6>
+                                        </label>
+                                        <input type="text" name=dish_description" class="form-control " required> 
+                                    </div>
+                                    <div class="form-group"> 
+                                        <label for=dish_price">
+                                            <h6>Price</h6>
+                                        </label>
+                                        <input type="text" name=dish_price" class="form-control " required> 
+                                    </div>
+                                    <div class="form-group"> 
+                                        <label for=dish_ranking">
+                                            <h6>Number Placing in Sales</h6>
+                                        </label>
+                                        <input type="number" name=dish_ranking" class="form-control " required> 
+                                    </div>
+                                    <div class="form-group"> 
+                                        <label for=dish_quantity">
+                                            <h6>Quantity</h6>
+                                        </label>
+                                        <input type="number" name=dish_quantity" class="form-control " required> 
+                                    </div>
+                                    <div class="form-group"> 
+                                        <label for=dish_image">
+                                            <h6>Upload Image</h6>
+                                        </label>
+                                        <input type="file" id="dish_image" class="form-control" accept="image/*" class="form-control" required> 
+                                    </div>
+                                    <div class="form-group checkboxInline">
+                                        <label for=dish_option">
+                                            <h6>Option Available</h6>
+                                        </label></br>
+                                        <input name="optionsDish[]" type="checkbox" value=1 >Seafood-Free 
+                                         &#160<input type="checkbox" name="optionsDish[]" value=1 >Nut-Free
+                                         &#160<input type="checkbox" name="optionsDish[]" value=1 >Vegetarian-Friendly
+                                         &#160<input type="checkbox" name="optionsDish[]" value=1 >Vegan-Friendly
+                                    </div>
+                                    <div class="card-footer"> 
+                                        <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Submission </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- End -->
                         </div>
                     </div>
                 </div>
@@ -156,14 +156,14 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
     <!--<script src="assets/js/script.js"></script>-->
-    <script type="text/javascript">
+<!--    <script type="text/javascript">
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
         $(function confirmation(foodName) {
             confirm("Are you sure to DELETE " + foodName + " ?");
         });
-    </script>
+    </script>-->
 </body>
 </html>
 @endsection

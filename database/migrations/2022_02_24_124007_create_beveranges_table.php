@@ -16,7 +16,6 @@ class CreateBeverangesTable extends Migration {
           $table->increments('id')->unique();
             $table->boolean('hotDrink');
             $table->boolean('coldDrink');
-            $table->boolean('caffeine');
             $table->timestamps();
         });
     }

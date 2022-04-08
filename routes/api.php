@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get("foods/dishes", [App\Http\Controllers\FoodApiController::class, 'indexDish']);
+Route::get("foods/beverages", [App\Http\Controllers\FoodApiController::class, 'indexBeverage']);

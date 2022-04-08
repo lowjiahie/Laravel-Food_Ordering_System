@@ -15,7 +15,6 @@ class CreateDishesTable extends Migration {
         Schema::create('dishes', function (Blueprint $table) {
             $table->increments('id')->unique();
 
-            $table->string('preparationTime');
             $table->boolean('seafoodFree');
             $table->boolean('nutFree');
             $table->boolean('veganFriendly');

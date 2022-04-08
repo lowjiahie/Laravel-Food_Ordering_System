@@ -74,8 +74,11 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="foodTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">F&B functions:</h6>
-                            <a class="collapse-item" href="#">Dish</a>
-                            <a class="collapse-item" href="/beverageManagement">Beverages</a>
+                            <a class="collapse-item" href="/createFood">Add Food</a>
+                            <a class="collapse-item" href="/editDish">Edit Dish</a>
+                            <a class="collapse-item" href="/editBeverage">Edit Beverages</a>
+                            <a class="collapse-item" href="/editCategory">Edit Category</a>
+                            <a class="collapse-item" href="/viewxmlhandbook">Handbook</a>
                         </div>
                     </div>
                 </li>

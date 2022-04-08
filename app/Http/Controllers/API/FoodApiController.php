@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class FoodApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,9 +46,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = new Category();
-        $category-> categoryName = $request->get('categoryName');
-        $category->save();
+        //
     }
 
     /**
@@ -70,9 +69,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updateName = Category::find($categoryName);
-        $updateName->name=$request->get('categoryName');
-        $updateName->save();
+        //
     }
 
     /**
@@ -83,7 +80,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $categoryName = Product::find($categoryName);
-        $categoryName->delete();
+        //
     }
 }

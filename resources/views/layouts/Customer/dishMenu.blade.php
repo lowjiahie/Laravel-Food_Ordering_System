@@ -22,33 +22,89 @@ and open the template in the editor.
             .set-right{
                 right: 0px;
             }
+            table{
+                margin-top: 5%
+            }
+            .form-group{
+                margin-top: 10%
+            }
         </style>
     </head>
     <body>
-        <div class="jumbotron">
-            <div class="container text-center">
-              <h1>Online Store</h1>      
-              <p>Mission, Vission & Values</p>
-            </div>
-        </div>
-
-      <div class="container">    
-        <div class="row">
-            @if(!empty($dishes) && $dishes->count())
+        <table class="table align-middle mb-0  bg-white">
+            <thead class="bg-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price(RM)</th>
+                    <th>Order Quantity</th>
+                    <th>Options</th>
+                    <th>Add to Cart</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(!empty($dishes) && $dishes->count())
                 @foreach($dishes as $value)
-                <div class="col-sm-4">
-                  <div class="panel panel-primary">
-                    <div class="panel-heading">{{ $value->foodName }}</div>
-                    <div class="panel-footer">{{ $value->price }}</div>
-                    <div class="panel-footer">{{ $value->preparationTime }}</div>
-                  </div>
-                </div>
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img
+                                src="{{asset('img/'. $value->image_path) }}"
+                                alt=""
+                                style="width: 100px; height: 100px"
+                                class="rounded-circle"
+                                />
+                            <div class="ms-3">
+                                <p class="fw-bold mb-1">{{ $value->foodName }}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{ $value->foodDescription }}</td>
+                    <td>{{ $value->price }}</td>
+                    <td><input type="number" name="quantity"/></td>
+                    <td>
+                        @if($value->seafoodFree === 1)
+                        <div class="text-muted mb-0">
+                            <input type='checkbox'>No Seafood Available</input>
+                        </div>
+                        @endif
+                        @if($value->nutFree === 1)
+                        <div class="text-muted mb-0">
+                            <input class="text-muted mb-0" type='checkbox'>No Nuts Available</input>
+                        </div>
+                        @endif
+                        @if($value->veganFriendly === 1)
+                        <div class="text-muted mb-0">
+                            <input class="text-muted mb-0" type='checkbox'>Available for Vegan</input>
+                        </div>
+                        @endif
+                        @if($value->vegetarianFriendly === 1)
+                        <div class="text-muted mb-0">
+                            <input class="text-muted mb-0" type='checkbox'>Available for Vegetarian</input>
+                        </div>
+                        @endif
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-link btn-sm btn-rounded">
+                            Add to Cart
+                        </button>
+                    </td>
+                </tr>
                 @endforeach
-            @else
-                <div class="col-sm-4"> There are no data. </div>     
-            @endif
-        </div>
-      </div>
-</body>
+                @else
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="ms-3">
+                                <p class="fw-bold mb-1">No Data Found</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>  
+                @endif
+            </tbody>
+        </table>
+        {!! $dishes->links() !!}
+    </body>
 </html>
 @endsection

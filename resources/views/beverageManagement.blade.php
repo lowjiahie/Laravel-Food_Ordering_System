@@ -27,74 +27,15 @@
                         <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
                         <!-- Credit card form tabs -->
                             <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
-                                <li class="nav-item"> <a data-toggle="pill" href="#add-beverage" class="nav-link active "> <i class="fas fa-plus-circle"></i>&#160 Create </a> </li>
-                                <li class="nav-item"> <a data-toggle="pill" href="#update-delete-beverage" class="nav-link "> <i class="fas fa-folder"></i>&#160 Update / Delete</a> </li>
+                                <li class="nav-item"> <a data-toggle="pill" href="#update-delete-beverage" class="nav-link active"> <i class="fas fa-folder"></i>&#160 Update / Delete</a> </li>
+                                <li class="nav-item"> <a data-toggle="pill" href="#add-beverage" class="nav-link"> <i class="fas fa-plus-circle"></i>&#160 Create </a> </li>
                             </ul>
                         </div> 
                         <!-- End -->
                         <!-- Add Beverage form content -->
                         <div class="tab-content">
-                        <!-- Add Beverage -->
-                            <div id="add-beverage" class="tab-pane fade show active pt-3">
-                                <form role="form">
-                                    <div class="form-group"> 
-                                        <label for="beverage_name">
-                                            <h6>Name</h6>
-                                        </label>
-                                        <input type="text" name="beverage_name" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group"> 
-                                        <label for="beverage_name">
-                                            <h6>Name</h6>
-                                        </label>
-                                        <input type="text" name="beverage_name" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group"> 
-                                        <label for="beverage_description">
-                                            <h6>Description</h6>
-                                        </label>
-                                        <input type="text" name="beverage_description" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group"> 
-                                        <label for="beverage_price">
-                                            <h6>Price</h6>
-                                        </label>
-                                        <input type="text" name="beverage_price" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group"> 
-                                        <label for="beverage_ranking">
-                                            <h6>Number Placing in Sales</h6>
-                                        </label>
-                                        <input type="number" name="beverage_ranking" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group"> 
-                                        <label for="beverage_quantity">
-                                            <h6>Quantity</h6>
-                                        </label>
-                                        <input type="number" name="beverage_quantity" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group"> 
-                                        <label for="beverage_image">
-                                            <h6>Upload Image</h6>
-                                        </label>
-                                        <input type="text" name="beverage_image" required class="form-control " required> 
-                                    </div>
-                                    <div class="form-group checkboxInline">
-                                        <label for=dish_option">
-                                            <h6>Options</h6>
-                                        </label></br>
-                                        <input type="checkbox">Hot Drink
-                                         &#160<input type="checkbox">Cold Drink
-                                         &#160<input type="checkbox">Caffeinated
-                                    </div>
-                                    <div class="card-footer"> 
-                                        <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Submission </button>
-                                    </div>
-                                </form>
-                            </div>        
-                            <!-- End -->
                             <!-- Update and Delete Beverage -->
-                            <div id="update-delete-beverage" class="tab-pane fade pt-3" style=".container {
+                            <div id="update-delete-beverage" class="tab-pane fade show active pt-3" style=".container {
                                 padding: 2rem 0rem;
                               }
 
@@ -144,7 +85,9 @@
                                       </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>        
+                            <!-- End -->
+                            
                         </div>
                     </div>
                 </div>

@@ -166,10 +166,6 @@ class DatabaseSeeder extends Seeder {
         ])->save();
 
         Category::create([
-            'categoryName' => 'Set Meal',
-        ])->save();
-
-        Category::create([
             'categoryName' => 'Coffee',
         ])->save();
 
@@ -181,7 +177,6 @@ class DatabaseSeeder extends Seeder {
     private function seedFood() {
 
         Dish::create([
-            'preparationTime' => '9 minutes',
             'seafoodFree' => true,
             'nutFree' => false,
             'veganFriendly' => false,
@@ -201,7 +196,6 @@ class DatabaseSeeder extends Seeder {
         ])->save();
 
         Dish::create([
-            'preparationTime' => '10 minutes',
             'seafoodFree' => false,
             'nutFree' => false,
             'veganFriendly' => false,
@@ -221,7 +215,6 @@ class DatabaseSeeder extends Seeder {
         ])->save();
 
         Dish::create([
-            'preparationTime' => '8 minutes',
             'seafoodFree' => true,
             'nutFree' => true,
             'veganFriendly' => true,
@@ -243,7 +236,6 @@ class DatabaseSeeder extends Seeder {
         Beverage::create([
             'hotDrink' => true,
             'coldDrink' => true,
-            'caffeine' => true,
         ])->save();
 
         Food::create([
@@ -261,7 +253,6 @@ class DatabaseSeeder extends Seeder {
         Beverage::create([
             'hotDrink' => true,
             'coldDrink' => true,
-            'caffeine' => true,
         ])->save();
 
         Food::create([
@@ -279,7 +270,6 @@ class DatabaseSeeder extends Seeder {
         Beverage::create([
             'hotDrink' => true,
             'coldDrink' => false,
-            'caffeine' => false,
         ])->save();
 
         Food::create([
