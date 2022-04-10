@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class BookingManagementController extends Controller {
 
-    protected $globalUser = 4;
+    protected $globalUser = 1;
 
     public function getAllBooking() {
         $cusRecentBookings = Booking::where(function ($query) {

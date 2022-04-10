@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\Booking\BookingController;
+use App\Http\Controllers\Customer\Login\CusLoginController;
+use App\Http\Controllers\Staff\Login\StaffLoginController;
 use App\Http\Controllers\Staff\Booking\BookingManagementController;
 
 /*
@@ -17,7 +19,7 @@ use App\Http\Controllers\Staff\Booking\BookingManagementController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::view('/booking', 'Customer.Booking.booking')->name('Customer.Booking.booking');
 Route::prefix('/Customer')->group(function() {
@@ -30,6 +32,8 @@ Route::prefix('/Customer')->group(function() {
     Route::get('/Booking/add/viewAddBooking', [BookingController::class, 'viewAddBooking'])->name('Customer.Booking.add.viewAddBooking');
     Route::post('/Booking/add/addBooking', [BookingController::class, 'addBooking'])->name('Customer.Booking.add.addBooking');
     Route::get('/Booking/timetable', [BookingController::class, 'renderBookingTimeTable'])->name('Customer.Booking.timetable');
+    Route::get('/Login/logout', [CusLoginController::class, 'logOutUser'])->name('Customer.Login.logOut');
+    Route::get('/Login/{id}', [CusLoginController::class, 'loginUser']);
 });
 
 Route::view('/booking', 'Staff.Booking.booking')->name('Staff.Booking.booking');
@@ -37,5 +41,7 @@ Route::prefix('/Staff')->group(function() {
     Route::get('/Booking/listbooking', [BookingManagementController::class, 'getAllBooking'])->name('Staff.Booking.listbooking');
     Route::get('/Booking/showAll', [BookingManagementController::class, 'showAllBookingState'])->name('Staff.Booking.showAll');
     Route::post('/Booking/listbooking/updateBookingState', [BookingManagementController::class, 'updateBookingState'])->name('Staff.Booking.listbooking.updateBookingState');
+    Route::get('/Login', [StaffLoginController::class, 'loginUser']);
+    Route::get('/Login/logout', [StaffLoginController::class, 'logOutUser'])->name('Staff.Login.logOut');;
 });
 

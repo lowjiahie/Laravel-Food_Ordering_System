@@ -85,7 +85,7 @@
                                 </li> 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link d-inline-flex ms-3" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="mr-2 pt-2 small">LOW JIA HIE</span>
+                                        <span class="mr-2 pt-2 small">{{Session::get('loginCus')->accountName}}</span>
                                         <svg t="1646278750138" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6511" width="32" height="32"><path d="M512 74.666667C270.933333 74.666667 74.666667 270.933333 74.666667 512S270.933333 949.333333 512 949.333333 949.333333 753.066667 949.333333 512 753.066667 74.666667 512 74.666667z m0 160c70.4 0 128 57.6 128 128s-57.6 128-128 128-128-57.6-128-128 57.6-128 128-128z m236.8 507.733333c-23.466667 32-117.333333 100.266667-236.8 100.266667s-213.333333-68.266667-236.8-100.266667c-8.533333-10.666667-10.666667-21.333333-8.533333-32 29.866667-110.933333 130.133333-187.733333 245.333333-187.733333s215.466667 76.8 245.333333 187.733333c2.133333 10.666667 0 21.333333-8.533333 32z" p-id="6512" fill="#8a8a8a"></path></svg>                                
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
@@ -93,7 +93,7 @@
                                         <a class="dropdown-item" href="#">My Order</a>
                                         <a class="dropdown-item" href="{{route('Customer.Booking.list.RecentBooking')}}">My Bookings</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">LogOut</a>
+                                        <a class="dropdown-item" href="{{route('Customer.Login.logOut')}}">LogOut</a>
                                     </div>
                                 </li>
                             </ul>

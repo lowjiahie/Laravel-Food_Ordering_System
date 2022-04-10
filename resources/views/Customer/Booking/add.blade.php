@@ -58,7 +58,7 @@
         <p>{{ \Session::get('success')}}</p>
     </div><br/>
     @endif
-    
+    <p>Booking Time : 11AM to 8PM</p>
     <a href="{{route('Customer.Booking.timetable')}}" target="popup" onclick="window.open('http://127.0.0.1:8000/Customer/Booking/timetable','popup','width=600,height=600'); return false;">View Booked Time</a>
     <form method="post" action="{{route('Customer.Booking.add.addBooking')}}" id="bookingForm">
         @csrf

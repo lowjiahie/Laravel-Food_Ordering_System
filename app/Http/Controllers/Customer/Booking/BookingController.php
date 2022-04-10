@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller {
 
-    protected $globalUser = 4;
+    protected $globalUser;
 
     /**
      * Get login customer booking recent booking record not included cancelled and reached booking
@@ -20,7 +20,8 @@ class BookingController extends Controller {
      * @return a list of customer bookings (not included cancelled and reached booking)
      */
     public function getRecentBooking() {
-        $customer = Account::find($this->globalUser);
+        $this->globalUser = Session::get('loginCus');
+        $customer = Account::find($this->globalUser->id);
         $cusBookings = Booking::whereBelongsTo($customer)->where(function ($query) {
                     $query->where('state', 'pending')->orWhere('state', 'booked');
                 })->get();
@@ -29,36 +30,42 @@ class BookingController extends Controller {
     }
 
     public function getPendingBooking() {
-        $customer = Account::find($this->globalUser);
+        $this->globalUser = Session::get('loginCus');
+        $customer = Account::find($this->globalUser->id);
         $cusBookings = Booking::whereBelongsTo($customer)->where('state', 'pending')->get();
 
         return view('Customer.Booking.list')->with(compact('cusBookings'));
     }
 
     public function getBookedBooking() {
-        $customer = Account::find($this->globalUser);
+        $this->globalUser = Session::get('loginCus');
+        $customer = Account::find($this->globalUser->id);
         $cusBookings = Booking::whereBelongsTo($customer)->where('state', 'booked')->get();
 
         return view('Customer.Booking.list')->with(compact('cusBookings'));
     }
 
     public function getReachedBooking() {
-        $customer = Account::find($this->globalUser);
+        $this->globalUser = Session::get('loginCus');
+        $customer = Account::find($this->globalUser->id);
         $cusBookings = Booking::whereBelongsTo($customer)->where('state', 'reached')->get();
 
         return view('Customer.Booking.list')->with(compact('cusBookings'));
     }
 
     public function getCancelledBooking() {
-        $customer = Account::find($this->globalUser);
+        $this->globalUser = Session::get('loginCus');
+        $customer = Account::find($this->globalUser->id);
         $cusBookings = Booking::whereBelongsTo($customer)->where('state', 'cancelled')->get();
 
         return view('Customer.Booking.list')->with(compact('cusBookings'));
     }
 
     public function renderBookingTimeTable() {
+        $this->globalUser = Session::get('loginCus');
         date_default_timezone_set("Asia/Kuala_Lumpur");
-        $bookedDateTimes = Booking::whereDate('booking_datetime', Carbon::today()->format('Y-m-d H:I:S'))->orderBy('booking_datetime', 'asc')
+        $bookedDateTimes = Booking::whereDate('booking_datetime',
+                                Carbon::today()->format('Y-m-d H:I:S'))->orderBy('booking_datetime', 'asc')
                         ->where(function ($query) {
                             $query->where('state', 'booked')->orWhere('state', 'reached');
                         })->get();
@@ -97,10 +104,14 @@ class BookingController extends Controller {
     }
 
     public function viewAddBooking() {
+        $this->globalUser = Session::get('loginCus');
         return view("Customer.Booking.add");
     }
 
     public function addBooking(Request $request) {
+        $this->globalUser = Session::get('loginCus');
+        $customer = Account::find($this->globalUser->id);
+
         date_default_timezone_set("Asia/Kuala_Lumpur");
         $results = $request->validate([
             'nickname' => 'required|regex:/^[a-zA-Z]+$/u|min:4|max:20',
@@ -123,13 +134,18 @@ class BookingController extends Controller {
         $newCarbonDatTime = Carbon::createFromFormat("Y-m-d H:i:s", $newBookingDateTime)->timestamp;
         $bookingDate = date('Ymd', $bookingDateTime);
         $newId = Booking::latest()->first()->id + 1;
-        $bookingNo = 'B' . $bookingDate . $newId . $this->globalUser;
+        $bookingNo = 'B' . $bookingDate . $newId . $this->globalUser->id;
 
+        $cusBookings = Booking::whereBelongsTo($customer)->whereDate('booking_datetime',
+                        Carbon::today()->format('Y-m-d'))->where(function ($query) {
+                            $query->where('state', 'pending')->orWhere('state', 'booked');
+                        })->exists();
+//        dd($cusBookings);
         if (count($results) > 0) {
 
-            if (Booking::where('booking_no', $bookingNo)->exists()) {
+            if ($cusBookings) {
                 Session::flash('failed', 'Booking failed, you had booked today, please try next day!');
-                return view("Customer.Booking.add");
+                return redirect()->back();
             }
 
             if ($newCarbonDatTime >= $open_datetime && $newCarbonDatTime <= $close_datetime) {
@@ -140,24 +156,25 @@ class BookingController extends Controller {
                     'booking_datetime' => $newBookingDateTime,
                     'state' => 'pending',
                     'numPersons' => $partySize,
-                    'account_id' => $this->globalUser,
+                    'account_id' => $this->globalUser->id,
                     'table_num' => NULL,
                 ])->save();
                 Session::flash('success', 'You had successfully booked!');
-                return view("Customer.Booking.add");
+                return redirect()->back();
             } else {
                 Session::flash('failed', 'Booking failed, Operation time is 11:00am to 8:00pm');
-                return view("Customer.Booking.add");
+                return redirect()->back();
             }
         }
     }
 
     public function cancelBooking(Request $request) {
+        $this->globalUser = Session::get('loginCus');
         $bookingID = $request->bookingID;
         $booking = Booking::find($bookingID);
         $stateBefore = $booking->state;
         $booking->state->transitionTo(\App\States\Cancelled::class);
-        Session::flash('success', "You Successfully cancelled ".$booking->booking_no);
+        Session::flash('success', "You Successfully cancelled " . $booking->booking_no);
         return redirect()->back();
     }
 
